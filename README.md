@@ -23,10 +23,15 @@
   ```bash
   .
   ├── README.md
-  └── vagrant # vagrant関連の設定を格納
-      └── centos7
-          ├── .vagrant # vagrantコマンドで自動生成 (サブディレクトリは省略)
-          └── Vagrantfile # vagrantコマンドで自動生成
+  └── vagrant
+      ├── centos
+      │   └── 7
+      │       ├── .vagrant # vagrantコマンドで自動生成 (サブディレクトリは省略)
+      │       └── Vagrantfile # vagrantコマンドで自動生成
+      └── ubuntu
+          └── focal64
+              ├── .vagrant # vagrantコマンドで自動生成 (サブディレクトリは省略)
+              └── Vagrantfile # vagrantコマンドで自動生成
   ```
 
 ## 手順
