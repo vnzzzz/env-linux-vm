@@ -2,7 +2,7 @@
 
 ## 目的
 
-- テスト用の VMを virtualbox + vagrant で作成する
+- テスト用の VM を virtualbox + vagrant で作成する
 
 ## 環境
 
@@ -53,7 +53,7 @@
 ### vagrant を利用し、virtual box 上に VM を作成する
 
 - vagrant box を追加する
-  <https://app.vagrantup.com/>からboxを検索する
+  <https://app.vagrantup.com/>から box を検索する
 
   - centos/7
 
@@ -61,7 +61,7 @@
     vagrant box add centos/7
     ```
 
-    provider を何にするか聞かれるので、`3) virtualbox`を選択する。
+    provider を何にするか聞かれるので、`3) virtualbox`を選択する
 
   - ubuntu
 
@@ -69,7 +69,9 @@
     vagrant box add ubuntu/focal64
     ```
 
-  インストールした box を確認するときは
+    2023/2 時点で上記の box は virualbox にしか対応していないので、provider は聞かれない
+
+- インストールした box を確認する
 
   ```bash
   vagrant box list
@@ -83,15 +85,17 @@
   mkdir vagrant/centos/7
   ```
 
-  以下、`vagrant`コマンドはすべてVagrantfileが存在するディレクトリで実行する
+  以下、`vagrant`コマンドはすべて Vagrantfile が存在するディレクトリで実行する
 
 - Vagrantfile を作成する
+
+  add してきた box の名前を指定し、`vagrant init`を実行して`Vagrantfile`を作成する
 
   ```bash
   vagrant init centos/7
   ```
 
-  `config.vm.network "private_network"`の部分の設定は、バッティングしないよう適切な IP アドレスを設定する。
+  Vagrantfile の`config.vm.network "private_network"`に、バッティングしないよう適切な IP アドレスを設定する
 
 - VM を起動する
 
@@ -105,17 +109,21 @@
   vagrant status
   ```
 
+  Virtual Box を起動し、GUI から確認することも可能
+
 - ssh で VM に接続する
 
   ```bash
   vagrant ssh
   ```
 
-  素の ssh でログインするときは、下記を実行する。
+  素の ssh でログインするときは、下記を実行する
 
   ```bash
-  ssh -i [vagrantfileがあるディレクトリ]/.vagrant/machines/default/virtualbox/private_key vagrant@192.168.56.10
+  ssh -i [vagrantfileがあるディレクトリ]/.vagrant/machines/default/virtualbox/private_key vagrant@[VMのIPアドレス]
   ```
+
+  例えば Ansible や VSCode Remote で VM につなぎに行くときに利用するかもしれない
 
 - VM をシャットダウンする
 
